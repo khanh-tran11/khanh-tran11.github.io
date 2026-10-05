@@ -2,219 +2,488 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Kim Khanh Tran, Computer Science student at San José State University. Machine learning and data engineering projects.">
 <meta property="og:title" content="Kim Khanh Tran">
 <meta property="og:description" content="Computer Science at SJSU. ML and data engineering projects. Available for internships January – September 2027.">
+<meta name="theme-color" content="#0d3a2b">
 <title>Kim Khanh Tran</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=Anton&display=swap">
 <style>
-/* Layout: one narrow reading column, resume-like rows with dates aligned right */
+/* Layout: dark green ground, pink accents; each section header pairs a heading with a meme card */
 :root {
-  --bg: #fcfcfb;
-  --ink: #1b1d1f;
-  --muted: #5d6268;
-  --line: #e3e4e2;
-  --accent: #1d4ed8;
-  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #141517; --ink: #e8e9ea; --muted: #a0a5ab; --line: #2c2e31; --accent: #8fb0ff;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #141517; --ink: #e8e9ea; --muted: #a0a5ab; --line: #2c2e31; --accent: #8fb0ff;
+  --bg: #0d3a2b;
+  --bg-deep: #082a1f;
+  --card: #134a37;
+  --line: #2a6650;
+  --pink: #ff9ccb;
+  --pink-hot: #ff5fa8;
+  --pink-soft: #ffd6e8;
+  --text: #fdf3f7;
+  --muted: #b8d6c9;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --meme: "Anton", Impact, "Arial Narrow Bold", sans-serif;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--sans); font-size: 16px; line-height: 1.65;
-  padding-inline: 20px; padding-block: 72px 80px;
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--body); font-size: 16px; line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(255,156,203,.12), transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(255,95,168,.08), transparent 35%);
+  background-attachment: fixed;
 }
-main { max-width: 720px; margin-inline: auto; }
-a { color: var(--accent); text-decoration: none; }
+.wrap { max-width: 980px; margin-inline: auto; padding-inline: 20px; }
+a { color: var(--pink); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 6px; }
 
-header { margin-bottom: 56px; }
-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.5rem; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 6px; }
-.tagline { color: var(--muted); margin: 0 0 20px; font-size: 1.05rem; }
-.intro { margin: 0 0 20px; max-width: 62ch; }
-.links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; list-style: none; font-weight: 500; }
-.avail { margin-top: 20px; font-size: .92rem; color: var(--muted); }
-.avail b { color: var(--ink); font-weight: 600; }
+/* nav */
+nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: rgba(8,42,31,.88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-block: 12px; }
+.logo { font-family: var(--display); font-weight: 800; color: var(--text); font-size: 1.1rem; }
+.logo span { color: var(--pink); }
+nav ul { display: flex; flex-wrap: wrap; gap: 4px 18px; list-style: none; margin: 0; padding: 0; }
+nav ul a { color: var(--muted); font-weight: 500; font-size: .92rem; }
+nav ul a:hover { color: var(--pink); text-decoration: none; }
 
-section { border-top: 1px solid var(--line); padding-block: 36px 8px; }
-h2 { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 24px; }
+/* hero */
+.hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; padding-block: 64px 48px; }
+.hero > * { min-width: 0; }
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--pink); color: var(--bg-deep); font-weight: 600; font-size: .85rem;
+  padding: 6px 14px; border-radius: 999px;
+}
+.badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--bg); animation: pulse 1.6s ease-in-out infinite; }
+h1 {
+  font-family: var(--display); font-weight: 800; font-size: clamp(2.8rem, 8vw, 5rem);
+  line-height: .98; letter-spacing: -0.03em; margin: 20px 0 16px; text-wrap: balance;
+}
+h1 .hi { color: var(--pink); display: inline-block; }
+.intro { font-size: 1.12rem; color: var(--muted); max-width: 36em; margin: 0 0 24px; }
+.intro b { color: var(--text); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .95rem;
+  padding: 11px 20px; border-radius: 12px; border: 2px solid var(--pink);
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 4px 4px 0 var(--pink-hot); }
+.btn.solid { background: var(--pink); color: var(--bg-deep); }
+.btn.line { color: var(--pink); }
 
-.item { margin-bottom: 32px; }
-.item-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 16px; flex-wrap: wrap; }
-.item-head > * { min-width: 0; }
-h3 { font-size: 1.1rem; font-weight: 600; margin: 0; }
-.date { font-family: var(--mono); font-size: .82rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.sub { color: var(--muted); margin: 2px 0 10px; font-size: .95rem; }
-.item ul { margin: 0 0 10px; padding-left: 1.15em; }
-.item li { margin-bottom: 5px; }
-.stack { font-family: var(--mono); font-size: .8rem; color: var(--muted); margin: 0; }
+/* meme card */
+.meme {
+  position: relative; margin: 0; background: linear-gradient(160deg, var(--pink-soft), var(--pink));
+  border-radius: 18px; border: 3px solid var(--bg-deep);
+  box-shadow: 6px 6px 0 var(--pink-hot);
+  aspect-ratio: 1 / 1; max-width: 100%; overflow: hidden;
+  transform: rotate(var(--tilt, -2deg)); transition: transform .25s;
+}
+.meme:hover { transform: rotate(0deg) scale(1.03); }
+.meme svg { position: absolute; left: 14%; top: 22%; width: 72%; height: 60%; }
+.hero .meme svg { left: 10%; top: 16%; width: 80%; height: 68%; }
+.meme .cap {
+  position: absolute; left: 6px; right: 6px; text-align: center;
+  font-family: var(--meme); text-transform: uppercase; color: #fff; line-height: 1.05;
+  font-size: clamp(1rem, 2.4vw, 1.35rem); letter-spacing: .02em;
+  -webkit-text-stroke: 1.5px #111; paint-order: stroke fill;
+  text-shadow: 2px 2px 0 #111, -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111;
+  text-wrap: balance;
+}
+.meme .top { top: 8px; }
+.meme .bot { bottom: 8px; }
+.sec-head .meme .cap, .contact .meme .cap { font-size: .92rem; }
+.hero .meme { --tilt: 3deg; max-width: 360px; margin-left: auto; width: 100%; }
 
-dl.skills { display: grid; grid-template-columns: 150px 1fr; gap: 10px 20px; margin: 0 0 28px; }
-dl.skills dt { font-weight: 600; font-size: .95rem; }
-dl.skills dd { margin: 0; color: var(--ink); }
+/* cat animation */
+.tail { transform-origin: 100px 112px; animation: wag 1.2s ease-in-out infinite alternate; }
+.eye { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
+.wave { transform-box: fill-box; transform-origin: 20% 90%; animation: wave .8s ease-in-out infinite alternate; }
+.screen-line { animation: type 2.4s steps(6) infinite; }
 
-.certs { list-style: none; padding: 0; margin: 0 0 28px; }
-.certs li { display: flex; justify-content: space-between; gap: 16px; padding-block: 7px; border-bottom: 1px solid var(--line); }
+/* ticker */
+.ticker { background: var(--pink); color: var(--bg-deep); overflow: hidden; border-block: 3px solid var(--bg-deep); transform: rotate(-1deg); margin-block: 8px 24px; }
+.ticker-track { display: flex; gap: 32px; width: max-content; padding-block: 10px; animation: scroll 32s linear infinite; font-family: var(--display); font-weight: 800; font-size: 1.05rem; white-space: nowrap; }
+.ticker-track span::after { content: "✦"; margin-left: 32px; }
+
+/* sections */
+section { padding-block: 48px; }
+.sec-head { display: grid; grid-template-columns: 1fr 220px; gap: 28px; align-items: center; margin-bottom: 28px; }
+.sec-head > * { min-width: 0; }
+.kicker { color: var(--pink); font-weight: 600; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 6px; }
+h2 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.05; margin: 0 0 10px; letter-spacing: -0.02em; }
+.sec-head p.lead { color: var(--muted); margin: 0; max-width: 40em; }
+
+.cards { display: grid; gap: 20px; }
+.card {
+  background: var(--card); border: 2px solid var(--line); border-radius: 18px; padding: 24px;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--pink); box-shadow: 6px 6px 0 var(--pink-hot); }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
+.card-head > * { min-width: 0; }
+h3 { font-family: var(--display); font-weight: 800; font-size: 1.35rem; margin: 0; letter-spacing: -0.01em; }
+.date { color: var(--pink); font-weight: 500; font-size: .88rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sub { color: var(--muted); margin: 4px 0 12px; font-size: .95rem; }
+.card ul { margin: 0 0 14px; padding-left: 1.15em; }
+.card li { margin-bottom: 6px; }
+.card li::marker { color: var(--pink); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.tags li { background: rgba(255,156,203,.14); color: var(--pink-soft); border: 1px solid rgba(255,156,203,.35); padding: 3px 11px; border-radius: 999px; font-size: .8rem; font-weight: 500; margin: 0; }
+.hl { display: inline-block; background: var(--pink); color: var(--bg-deep); font-weight: 600; font-size: .78rem; padding: 2px 9px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* skills */
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 20px; }
+.skill-grid h4 { font-family: var(--display); font-weight: 600; font-size: 1.05rem; margin: 0 0 12px; color: var(--pink); }
+
+/* education */
+.certs { list-style: none; padding: 0; margin: 0; }
+.certs li { display: flex; justify-content: space-between; gap: 16px; padding-block: 9px; border-bottom: 1px dashed var(--line); }
 .certs li:last-child { border-bottom: 0; }
 .certs li > span:first-child { min-width: 0; }
+.certs li > span:last-child { white-space: nowrap; }
+.certs .done { color: var(--pink); }
+.certs .wip { color: var(--muted); }
 
-footer { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 28px; }
-footer p { margin: 0 0 6px; }
-footer .small { color: var(--muted); font-size: .85rem; margin-top: 20px; }
+/* contact */
+.contact { background: var(--pink); color: var(--bg-deep); border-radius: 24px; border: 3px solid var(--bg-deep); box-shadow: 8px 8px 0 var(--pink-hot); padding: 36px; display: grid; grid-template-columns: 1fr 220px; gap: 28px; align-items: center; }
+.contact > * { min-width: 0; }
+.contact h2 { color: var(--bg-deep); }
+.contact p { margin: 0 0 18px; max-width: 40em; }
+.contact .meme { background: linear-gradient(160deg, #fff, var(--pink-soft)); box-shadow: 6px 6px 0 var(--bg-deep); }
+.contact .btn.solid { background: var(--bg-deep); color: var(--pink); border-color: var(--bg-deep); }
+.contact .btn.line { color: var(--bg-deep); border-color: var(--bg-deep); }
+.contact .btn:hover { box-shadow: 4px 4px 0 var(--bg); }
+.email { font-weight: 600; word-break: break-all; }
 
-@media (max-width: 560px) {
-  body { padding-block: 44px 56px; }
-  h1 { font-size: 2rem; }
-  dl.skills { grid-template-columns: 1fr; gap: 2px; }
-  dl.skills dd { margin-bottom: 10px; }
+footer { padding-block: 32px 48px; color: var(--muted); font-size: .85rem; text-align: center; }
+
+@keyframes wag { from { transform: rotate(-10deg); } to { transform: rotate(14deg); } }
+@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes wave { from { transform: rotate(-12deg); } to { transform: rotate(18deg); } }
+@keyframes type { 0% { opacity: .3; } 50% { opacity: 1; } 100% { opacity: .3; } }
+@keyframes scroll { to { transform: translateX(-50%); } }
+@keyframes pulse { 50% { transform: scale(1.5); opacity: .5; } }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding-block: 40px 32px; gap: 32px; }
+  .hero .meme { margin-inline: auto; max-width: 300px; }
+  .sec-head { grid-template-columns: 1fr; }
+  .sec-head .meme { max-width: 240px; }
+  .two-col { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; padding: 28px 22px; }
+  .contact .meme { max-width: 240px; }
   .certs li { flex-direction: column; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
 <body>
 
-<main>
-  <header>
-    <h1>Kim Khanh Tran</h1>
-    <p class="tagline">Computer Science student at San José State University</p>
-    <p class="intro">I work on machine learning and the data pipelines behind it. Recently that has meant generating 1.5 million rows of transistor simulation data to train a device model, and building a retrieval pipeline on AWS for healthcare data.</p>
-    <ul class="links">
-      <li><a href="mailto:tkkhanh.work@gmail.com">tkkhanh.work@gmail.com</a></li>
-      <li><a href="https://github.com/khanh-tran11">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/tkkhanh">LinkedIn</a></li>
-      <li><a href="resume.pdf">Resume (PDF)</a></li>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Khanh<span>.</span></a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <p class="avail">Seeking ML, data, or software engineering internships. <b>Available January – September 2027.</b> Based in Sunnyvale, CA.</p>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="wrap hero">
+    <div>
+      <span class="badge">Open to internships · Jan – Sep 2027</span>
+      <h1>Hi, I'm <span class="hi">Kim Khanh Tran</span></h1>
+      <p class="intro">Computer Science student at <b>San José State University</b>. I build machine learning models and the data pipelines behind them, from <b>1.5 million rows of transistor simulations</b> to a <b>RAG pipeline on AWS</b> for healthcare data.</p>
+      <div class="actions">
+        <a class="btn solid" href="#projects">See my projects</a>
+        <a class="btn line" href="https://github.com/khanh-tran11">GitHub</a>
+        <a class="btn line" href="https://linkedin.com/in/tkkhanh">LinkedIn</a>
+      </div>
+    </div>
+    <figure class="meme" data-cat="laptop" data-fur="#f2a65a">
+      <figcaption class="cap top">Me generating 1.5M rows</figcaption>
+      <span class="cap bot">when the target was 100K</span>
+    </figure>
   </header>
 
-  <section id="projects">
-    <h2>Projects</h2>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Python</span><span>PyTorch</span><span>scikit-learn</span><span>SQL</span><span>AWS Lambda</span><span>Amazon Bedrock</span><span>DynamoDB</span><span>MongoDB</span><span>RAG</span><span>NLP</span><span>pytest</span><span>C++</span><span>Java</span>
+      <span>Python</span><span>PyTorch</span><span>scikit-learn</span><span>SQL</span><span>AWS Lambda</span><span>Amazon Bedrock</span><span>DynamoDB</span><span>MongoDB</span><span>RAG</span><span>NLP</span><span>pytest</span><span>C++</span><span>Java</span>
+    </div>
+  </div>
 
-    <div class="item">
-      <div class="item-head"><h3>ML-Based MOSFET Digital Twin</h3><span class="date">Sep 2026 – Present</span></div>
-      <p class="sub">Big Data course project, San José State University · Product Manager and engineer</p>
-      <ul>
-        <li>Built a simulation pipeline with PyCMG and BSIM-CMG that produced 1.5M rows of transistor data, 15 times the 100K-row target.</li>
-        <li>Developing a Python model that predicts transistor current directly, removing the need to run new simulations.</li>
-        <li>Led the team with Jira and GitHub and delivered the proposal, codebase, and dataset.</li>
-      </ul>
-      <p class="stack">Python · NumPy · PyCMG · BSIM-CMG · Jira</p>
+  <section id="projects" class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">Things I built</p>
+        <h2>Projects</h2>
+        <p class="lead">From transistor physics to disaster response to human–AI bias research.</p>
+      </div>
+      <figure class="meme" data-cat="goggles" data-fur="#a7b0ba" style="--tilt:-3deg">
+        <figcaption class="cap top">When the model</figcaption>
+        <span class="cap bot">predicts the current right</span>
+      </figure>
     </div>
 
-    <div class="item">
-      <div class="item-head"><h3>Life Lynx</h3><span class="date">Apr – May 2025</span></div>
-      <p class="sub">UC Davis Hackathon · Disaster-response communication network</p>
-      <ul>
-        <li>Built and deployed a decentralized disaster-response network with real-time messaging and geospatial mapping, modeled on how cockroach colonies communicate.</li>
-        <li>Added ML-based injury detection and an NLP voice assistant to automate triage and prioritize critical cases, improving communication reliability from 70% to 80%.</li>
-      </ul>
-      <p class="stack">Python · MongoDB · OpenAI API · Google Maps API</p>
-    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-head"><h3>ML-Based MOSFET Digital Twin <span class="hl">In progress</span></h3><span class="date">Sep 2026 – Present</span></div>
+        <p class="sub">Big Data course project, San José State University · Product Manager and engineer</p>
+        <ul>
+          <li>Built a simulation pipeline with PyCMG and BSIM-CMG that produced 1.5M rows of transistor data, 15 times the 100K-row target.</li>
+          <li>Developing a Python model that predicts transistor current directly, removing the need to run new simulations.</li>
+          <li>Led the team with Jira and GitHub and delivered the proposal, codebase, and dataset.</li>
+        </ul>
+        <ul class="tags"><li>Python</li><li>NumPy</li><li>PyCMG</li><li>BSIM-CMG</li><li>Jira</li></ul>
+      </article>
 
-    <div class="item">
-      <div class="item-head"><h3>Human–AI Interaction Study</h3><span class="date">Feb – May 2025</span></div>
-      <p class="sub">Stanford Small Science Group, Stanford University</p>
-      <ul>
-        <li>Built the data collection platform for a 10+ participant study on AI perception and bias, and streamlined the statistical analysis.</li>
-        <li>Results pointed to a feedback loop in both directions: human biases shape AI systems, and biased AI reinforces human decisions.</li>
-      </ul>
-      <p class="stack">Research design · Statistics · Excel</p>
-    </div>
-  </section>
+      <div class="two-col">
+        <article class="card">
+          <div class="card-head"><h3>Life Lynx</h3><span class="date">Apr – May 2025</span></div>
+          <p class="sub">UC Davis Hackathon · Disaster-response network</p>
+          <ul>
+            <li>Built and deployed a decentralized disaster-response network with real-time messaging and geospatial mapping, modeled on how cockroach colonies communicate.</li>
+            <li>Added ML injury detection and an NLP voice assistant to automate triage, raising communication reliability from 70% to 80%.</li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>MongoDB</li><li>OpenAI API</li><li>Google Maps API</li></ul>
+        </article>
 
-  <section id="experience">
-    <h2>Experience</h2>
-
-    <div class="item">
-      <div class="item-head"><h3>AI/ML Engineering and Research Fellow</h3><span class="date">Sep 2026 – Present</span></div>
-      <p class="sub">IBM SkillsBuild AI Experiential Learning Lab · Healthcare PBM AI · Remote</p>
-      <ul>
-        <li>Building Python and SQL NLP pipelines for pharmacy benefit manager data, with a goal of 20% faster processing.</li>
-        <li>Training four classification models in PyTorch and scikit-learn, aiming for a 5–10% gain in F1 and AUROC.</li>
-        <li>Building a RAG pipeline on AWS and comparing three retrieval strategies to keep hallucination below 10%.</li>
-        <li>Writing pytest suites for the pipelines and Python APIs toward 80%+ coverage, along with a SQL-backed web demo.</li>
-      </ul>
-      <p class="stack">PyTorch · scikit-learn · SQL · AWS · pytest</p>
-    </div>
-
-    <div class="item">
-      <div class="item-head"><h3>AI/ML Fellow</h3><span class="date">Jul – Aug 2026</span></div>
-      <p class="sub">AWS AI Camp · Hartnell College industry project</p>
-      <ul>
-        <li>Built a serverless onboarding platform on Amazon Bedrock Knowledge Bases, Lambda, and DynamoDB that automates new-hire training and tracks progress.</li>
-        <li>Built manager dashboards that flag policy violations and automate follow-ups, cutting estimated manager workload by 15% while keeping API token costs down.</li>
-      </ul>
-      <p class="stack">Amazon Bedrock · AWS Lambda · DynamoDB</p>
-    </div>
-
-    <div class="item">
-      <div class="item-head"><h3>Student Leader</h3><span class="date">May 2026 – Present</span></div>
-      <p class="sub">IBM SkillsBuild · Remote</p>
-      <ul><li>Organize events that connect students with IBM mentors and industry professionals.</li></ul>
-    </div>
-
-    <div class="item">
-      <div class="item-head"><h3>Instructional Assistant and Ambassador</h3><span class="date">Sep 2024 – Jun 2026</span></div>
-      <p class="sub">MESA Center, De Anza College · Cupertino, CA</p>
-      <ul><li>Built Excel workflows to analyze internship and labor-market data for 1,200+ students, and helped run STEM conferences and career fairs.</li></ul>
+        <article class="card">
+          <div class="card-head"><h3>Human–AI Interaction Study</h3><span class="date">Feb – May 2025</span></div>
+          <p class="sub">Stanford Small Science Group, Stanford University</p>
+          <ul>
+            <li>Built the data collection platform for a 10+ participant study on AI perception and bias, and streamlined the statistical analysis.</li>
+            <li>Results pointed to a two-way loop: human biases shape AI, and biased AI reinforces human decisions.</li>
+          </ul>
+          <ul class="tags"><li>Research</li><li>Statistics</li><li>Excel</li></ul>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <dl class="skills">
-      <dt>Languages</dt><dd>Python, SQL, Bash, C++, Java, x86 Assembly</dd>
-      <dt>ML and AI</dt><dd>PyTorch, scikit-learn, Amazon Bedrock Knowledge Bases, OpenAI API</dd>
-      <dt>Cloud and data</dt><dd>AWS Lambda, DynamoDB, MongoDB, NumPy, Excel</dd>
-      <dt>Simulation</dt><dd>PyCMG, BSIM-CMG, OpenVAF-Reloaded</dd>
-      <dt>Tools</dt><dd>Git, GitHub, Jira, pytest</dd>
-    </dl>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <div class="item">
-      <div class="item-head"><h3>San José State University</h3><span class="date">Expected May 2028</span></div>
-      <p class="sub">B.S. Computer Science · Coursework: Data Structures and Algorithms, Big Data Processing, Databases, Linux, Object-Oriented Programming, Statistics</p>
+  <section id="experience" class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">Where I've worked</p>
+        <h2>Experience</h2>
+        <p class="lead">Fellowships with IBM and AWS, plus a few years helping other students find their way into STEM.</p>
+      </div>
+      <figure class="meme" data-cat="tie" data-fur="#2b2b30" style="--tilt:2deg">
+        <figcaption class="cap top">Fellow at IBM and AWS</figcaption>
+        <span class="cap bot">very professional cat</span>
+      </figure>
     </div>
-    <div class="item">
-      <div class="item-head"><h3>De Anza College</h3><span class="date">Jun 2026</span></div>
-      <p class="sub">A.S.-T Computer Science · GPA 3.62 · Magna Cum Laude</p>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-head"><h3>AI/ML Engineering and Research Fellow</h3><span class="date">Sep 2026 – Present</span></div>
+        <p class="sub">IBM SkillsBuild AI Experiential Learning Lab · Healthcare PBM AI · Remote</p>
+        <ul>
+          <li>Building Python and SQL NLP pipelines for pharmacy benefit manager data, with a goal of 20% faster processing.</li>
+          <li>Training four classification models in PyTorch and scikit-learn, aiming for a 5–10% gain in F1 and AUROC.</li>
+          <li>Building a RAG pipeline on AWS and comparing three retrieval strategies to keep hallucination below 10%.</li>
+          <li>Writing pytest suites for the pipelines and APIs toward 80%+ coverage, along with a SQL-backed web demo.</li>
+        </ul>
+        <ul class="tags"><li>PyTorch</li><li>scikit-learn</li><li>SQL</li><li>AWS</li><li>RAG</li><li>pytest</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="card-head"><h3>AI/ML Fellow</h3><span class="date">Jul – Aug 2026</span></div>
+        <p class="sub">AWS AI Camp · Hartnell College industry project</p>
+        <ul>
+          <li>Built a serverless onboarding platform on Amazon Bedrock Knowledge Bases, Lambda, and DynamoDB that automates new-hire training and tracks progress.</li>
+          <li>Built manager dashboards that flag policy violations and automate follow-ups, cutting estimated manager workload by 15% while keeping API token costs down.</li>
+        </ul>
+        <ul class="tags"><li>Amazon Bedrock</li><li>AWS Lambda</li><li>DynamoDB</li></ul>
+      </article>
+
+      <div class="two-col">
+        <article class="card">
+          <div class="card-head"><h3>Student Leader</h3><span class="date">May 2026 – Present</span></div>
+          <p class="sub">IBM SkillsBuild · Remote</p>
+          <ul><li>Organize events that connect students with IBM mentors and industry professionals.</li></ul>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3>Instructional Assistant</h3><span class="date">Sep 2024 – Jun 2026</span></div>
+          <p class="sub">MESA Center, De Anza College</p>
+          <ul><li>Built Excel workflows analyzing internship and labor-market data for 1,200+ students, and helped run STEM conferences and career fairs.</li></ul>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <ul class="certs">
-      <li><span>AWS Artificial Intelligence Practitioner Learning Plan, AWS</span><span class="date">Jul 2026</span></li>
-      <li><span>Machine Learning Foundation, Break Through Tech</span><span class="date">Aug 2026</span></li>
-      <li><span>Data Classification and Summarization Using IBM Granite, IBM</span><span class="date">In progress</span></li>
-      <li><span>Introduction to Retrieval Augmented Generation, IBM</span><span class="date">In progress</span></li>
-      <li><span>Make Agentic AI Work for You, IBM</span><span class="date">In progress</span></li>
-      <li><span>Design Thinking Practitioner, IBM</span><span class="date">In progress</span></li>
-    </ul>
+  <section id="skills" class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">My toolbox</p>
+        <h2>Skills</h2>
+        <p class="lead">The languages and tools I use most.</p>
+      </div>
+      <figure class="meme" data-cat="glasses" data-fur="#f6e3c8" style="--tilt:-2deg">
+        <figcaption class="cap top">Python, SQL, PyTorch</figcaption>
+        <span class="cap bot">and x86 assembly for fun</span>
+      </figure>
+    </div>
+    <div class="skill-grid">
+      <div class="card"><h4>Languages</h4><ul class="tags"><li>Python</li><li>SQL</li><li>Bash</li><li>C++</li><li>Java</li><li>x86 Assembly</li></ul></div>
+      <div class="card"><h4>ML and AI</h4><ul class="tags"><li>PyTorch</li><li>scikit-learn</li><li>Bedrock Knowledge Bases</li><li>OpenAI API</li></ul></div>
+      <div class="card"><h4>Cloud and data</h4><ul class="tags"><li>AWS Lambda</li><li>DynamoDB</li><li>MongoDB</li><li>NumPy</li><li>Excel</li></ul></div>
+      <div class="card"><h4>Simulation</h4><ul class="tags"><li>PyCMG</li><li>BSIM-CMG</li><li>OpenVAF-Reloaded</li></ul></div>
+      <div class="card"><h4>Tools</h4><ul class="tags"><li>Git</li><li>GitHub</li><li>Jira</li><li>pytest</li></ul></div>
+    </div>
   </section>
 
-  <footer id="contact">
-    <p>The best way to reach me is email: <a href="mailto:tkkhanh.work@gmail.com">tkkhanh.work@gmail.com</a></p>
-    <p class="small">© 2026 Kim Khanh Tran</p>
-  </footer>
+  <section id="education" class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker">School and certificates</p>
+        <h2>Education</h2>
+        <p class="lead">Transferred from De Anza with honors, now finishing my B.S. at SJSU.</p>
+      </div>
+      <figure class="meme" data-cat="gradcap" data-fur="#f2a65a" style="--tilt:3deg">
+        <figcaption class="cap top">Magna cum laude</figcaption>
+        <span class="cap bot">magna cum meow</span>
+      </figure>
+    </div>
+    <div class="two-col">
+      <div class="cards">
+        <article class="card">
+          <div class="card-head"><h3>San José State University</h3><span class="date">Expected May 2028</span></div>
+          <p class="sub">B.S. Computer Science</p>
+          <ul class="tags"><li>Data Structures and Algorithms</li><li>Big Data</li><li>Databases</li><li>Linux</li><li>OOP</li><li>Statistics</li></ul>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3>De Anza College</h3><span class="date">Jun 2026</span></div>
+          <p class="sub">A.S.-T Computer Science · GPA 3.62 · Magna Cum Laude</p>
+        </article>
+      </div>
+      <article class="card">
+        <h3>Certificates</h3>
+        <ul class="certs">
+          <li><span>AWS AI Practitioner Learning Plan</span><span class="done">Jul 2026</span></li>
+          <li><span>Machine Learning Foundation, Break Through Tech</span><span class="done">Aug 2026</span></li>
+          <li><span>Data Classification and Summarization Using IBM Granite</span><span class="wip">In progress</span></li>
+          <li><span>Introduction to RAG, IBM</span><span class="wip">In progress</span></li>
+          <li><span>Make Agentic AI Work for You, IBM</span><span class="wip">In progress</span></li>
+          <li><span>Design Thinking Practitioner, IBM</span><span class="wip">In progress</span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap">
+    <div class="contact">
+      <div>
+        <h2>Let's work together</h2>
+        <p>I'm looking for ML, data, or software engineering internships from January to September 2027. I'm based in Sunnyvale and open to remote. Email is the best way to reach me: <a class="email" href="mailto:tkkhanh.work@gmail.com" style="color:inherit">tkkhanh.work@gmail.com</a></p>
+        <div class="actions">
+          <a class="btn solid" href="mailto:tkkhanh.work@gmail.com">Email me</a>
+          <a class="btn line" href="https://linkedin.com/in/tkkhanh">LinkedIn</a>
+          <a class="btn line" href="https://github.com/khanh-tran11">GitHub</a>
+        </div>
+      </div>
+      <figure class="meme" data-cat="wave" data-fur="#a7b0ba" style="--tilt:-3deg">
+        <figcaption class="cap top">Available Jan – Sep 2027</figcaption>
+        <span class="cap bot">hire me, I bring snacks</span>
+      </figure>
+    </div>
+  </section>
 </main>
+
+<footer>© 2026 Kim Khanh Tran · made with code and cats</footer>
+
+<script>
+(function () {
+  function cat(kind, fur) {
+    var dark = fur === '#2b2b30';
+    var ink = dark ? '#fdf3f7' : '#2a1c22';
+    var eyeFill = dark ? '#ffd23f' : '#2a1c22';
+    var p = [];
+    p.push('<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">');
+    // tail
+    p.push('<path class="tail" d="M100 112 C128 112 134 84 120 70" fill="none" stroke="' + fur + '" stroke-width="10" stroke-linecap="round"/>');
+    // body
+    p.push('<ellipse cx="70" cy="110" rx="34" ry="25" fill="' + fur + '"/>');
+    p.push('<ellipse cx="70" cy="116" rx="18" ry="14" fill="#fff" opacity=".35"/>');
+    // ears
+    p.push('<polygon points="42,48 46,18 66,36" fill="' + fur + '"/><polygon points="98,48 94,18 74,36" fill="' + fur + '"/>');
+    p.push('<polygon points="48,40 49,27 59,36" fill="#ff9ccb"/><polygon points="92,40 91,27 81,36" fill="#ff9ccb"/>');
+    // head
+    p.push('<circle cx="70" cy="64" r="31" fill="' + fur + '"/>');
+    // cheeks
+    p.push('<ellipse cx="50" cy="74" rx="6" ry="4" fill="#ff5fa8" opacity=".45"/><ellipse cx="90" cy="74" rx="6" ry="4" fill="#ff5fa8" opacity=".45"/>');
+    // eyes
+    if (kind === 'gradcap' || kind === 'wave') {
+      p.push('<path d="M53 62 q6 -7 12 0" fill="none" stroke="' + ink + '" stroke-width="3" stroke-linecap="round"/><path d="M75 62 q6 -7 12 0" fill="none" stroke="' + ink + '" stroke-width="3" stroke-linecap="round"/>');
+    } else {
+      p.push('<g class="eye"><ellipse cx="59" cy="61" rx="5" ry="6.5" fill="' + eyeFill + '"/><circle cx="60.5" cy="59" r="1.8" fill="#fff"/></g>');
+      p.push('<g class="eye"><ellipse cx="81" cy="61" rx="5" ry="6.5" fill="' + eyeFill + '"/><circle cx="82.5" cy="59" r="1.8" fill="#fff"/></g>');
+      if (dark) p.push('<ellipse cx="59" cy="61" rx="1.6" ry="5" fill="#111"/><ellipse cx="81" cy="61" rx="1.6" ry="5" fill="#111"/>');
+    }
+    // nose + mouth
+    p.push('<polygon points="66,70 74,70 70,75" fill="#ff5fa8"/>');
+    p.push('<path d="M70 75 q-4 6 -9 3 M70 75 q4 6 9 3" fill="none" stroke="' + ink + '" stroke-width="2" stroke-linecap="round"/>');
+    // whiskers
+    p.push('<g stroke="' + ink + '" stroke-width="1.4" stroke-linecap="round" opacity=".7"><line x1="44" y1="70" x2="28" y2="66"/><line x1="44" y1="74" x2="28" y2="76"/><line x1="96" y1="70" x2="112" y2="66"/><line x1="96" y1="74" x2="112" y2="76"/></g>');
+
+    if (kind === 'laptop') {
+      p.push('<rect x="36" y="96" width="68" height="40" rx="4" fill="#0d3a2b" stroke="#082a1f" stroke-width="2"/>');
+      p.push('<circle cx="70" cy="116" r="5" fill="#ff9ccb"/>');
+      p.push('<rect class="screen-line" x="42" y="102" width="20" height="3" rx="1.5" fill="#ff9ccb"/>');
+      p.push('<ellipse cx="44" cy="96" rx="8" ry="5" fill="' + fur + '"/><ellipse cx="96" cy="96" rx="8" ry="5" fill="' + fur + '"/>');
+    } else {
+      p.push('<ellipse cx="56" cy="133" rx="9" ry="5" fill="' + fur + '"/><ellipse cx="84" cy="133" rx="9" ry="5" fill="' + fur + '"/>');
+    }
+    if (kind === 'goggles') {
+      p.push('<path d="M39 58 H101" stroke="#ff5fa8" stroke-width="5"/>');
+      p.push('<circle cx="59" cy="61" r="10" fill="#bde7ff" fill-opacity=".35" stroke="#ff5fa8" stroke-width="4"/><circle cx="81" cy="61" r="10" fill="#bde7ff" fill-opacity=".35" stroke="#ff5fa8" stroke-width="4"/>');
+      p.push('<g transform="translate(100 100)"><rect x="-8" y="-6" width="16" height="12" rx="2" fill="#0d3a2b"/><line x1="-5" y1="-6" x2="-5" y2="-11" stroke="#ccc" stroke-width="2"/><line x1="0" y1="-6" x2="0" y2="-11" stroke="#ccc" stroke-width="2"/><line x1="5" y1="-6" x2="5" y2="-11" stroke="#ccc" stroke-width="2"/></g>');
+    }
+    if (kind === 'tie') {
+      p.push('<polygon points="58,92 70,98 82,92 82,100 58,100" fill="#fdf3f7"/>');
+      p.push('<polygon points="66,97 74,97 72,102 68,102" fill="#ff5fa8"/><polygon points="68,102 72,102 76,124 70,130 64,124" fill="#ff5fa8"/>');
+    }
+    if (kind === 'glasses') {
+      p.push('<g fill="none" stroke="#2a1c22" stroke-width="3"><rect x="48" y="53" width="20" height="16" rx="6"/><rect x="72" y="53" width="20" height="16" rx="6"/><path d="M68 60 h4"/></g>');
+      p.push('<rect x="50" y="98" width="40" height="28" rx="2" fill="#ff5fa8"/><rect x="69" y="98" width="2" height="28" fill="#082a1f"/><text x="60" y="116" font-size="9" font-family="monospace" fill="#fff" text-anchor="middle">py</text>');
+    }
+    if (kind === 'gradcap') {
+      p.push('<polygon points="70,22 104,34 70,46 36,34" fill="#082a1f"/><rect x="56" y="38" width="28" height="10" fill="#082a1f"/>');
+      p.push('<path d="M70 34 L98 38 L98 52" fill="none" stroke="#ff5fa8" stroke-width="2"/><circle cx="98" cy="54" r="3" fill="#ff5fa8"/>');
+    }
+    if (kind === 'wave') {
+      p.push('<g class="wave"><ellipse cx="108" cy="84" rx="8" ry="16" fill="' + fur + '"/><ellipse cx="108" cy="72" rx="7" ry="5" fill="#ff9ccb"/></g>');
+      p.push('<path d="M26 40 c-4 -6 -12 -2 -8 5 l8 8 l8 -8 c4 -7 -4 -11 -8 -5z" fill="#ff5fa8"/>');
+    }
+    p.push('</svg>');
+    return p.join('');
+  }
+  document.querySelectorAll('.meme[data-cat]').forEach(function (fig) {
+    fig.insertAdjacentHTML('afterbegin', cat(fig.dataset.cat, fig.dataset.fur));
+  });
+})();
+</script>
 </body>
 </html>
