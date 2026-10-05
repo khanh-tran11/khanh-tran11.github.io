@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kim Khanh Tran, Computer Science student at San José State University. Machine learning and data engineering projects.">
+<meta property="og:title" content="Kim Khanh Tran">
+<meta property="og:description" content="Computer Science at SJSU. ML and data engineering projects. Available for internships January – September 2027.">
+<title>Kim Khanh Tran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: one narrow reading column, resume-like rows with dates aligned right */
+:root {
+  --bg: #fcfcfb;
+  --ink: #1b1d1f;
+  --muted: #5d6268;
+  --line: #e3e4e2;
+  --accent: #1d4ed8;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141517; --ink: #e8e9ea; --muted: #a0a5ab; --line: #2c2e31; --accent: #8fb0ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141517; --ink: #e8e9ea; --muted: #a0a5ab; --line: #2c2e31; --accent: #8fb0ff;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-size: 16px; line-height: 1.65;
+  padding-inline: 20px; padding-block: 72px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+main { max-width: 720px; margin-inline: auto; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+header { margin-bottom: 56px; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 2.5rem; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 6px; }
+.tagline { color: var(--muted); margin: 0 0 20px; font-size: 1.05rem; }
+.intro { margin: 0 0 20px; max-width: 62ch; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; list-style: none; font-weight: 500; }
+.avail { margin-top: 20px; font-size: .92rem; color: var(--muted); }
+.avail b { color: var(--ink); font-weight: 600; }
+
+section { border-top: 1px solid var(--line); padding-block: 36px 8px; }
+h2 { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 24px; }
+
+.item { margin-bottom: 32px; }
+.item-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 16px; flex-wrap: wrap; }
+.item-head > * { min-width: 0; }
+h3 { font-size: 1.1rem; font-weight: 600; margin: 0; }
+.date { font-family: var(--mono); font-size: .82rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sub { color: var(--muted); margin: 2px 0 10px; font-size: .95rem; }
+.item ul { margin: 0 0 10px; padding-left: 1.15em; }
+.item li { margin-bottom: 5px; }
+.stack { font-family: var(--mono); font-size: .8rem; color: var(--muted); margin: 0; }
+
+dl.skills { display: grid; grid-template-columns: 150px 1fr; gap: 10px 20px; margin: 0 0 28px; }
+dl.skills dt { font-weight: 600; font-size: .95rem; }
+dl.skills dd { margin: 0; color: var(--ink); }
+
+.certs { list-style: none; padding: 0; margin: 0 0 28px; }
+.certs li { display: flex; justify-content: space-between; gap: 16px; padding-block: 7px; border-bottom: 1px solid var(--line); }
+.certs li:last-child { border-bottom: 0; }
+.certs li > span:first-child { min-width: 0; }
+
+footer { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 28px; }
+footer p { margin: 0 0 6px; }
+footer .small { color: var(--muted); font-size: .85rem; margin-top: 20px; }
+
+@media (max-width: 560px) {
+  body { padding-block: 44px 56px; }
+  h1 { font-size: 2rem; }
+  dl.skills { grid-template-columns: 1fr; gap: 2px; }
+  dl.skills dd { margin-bottom: 10px; }
+  .certs li { flex-direction: column; gap: 0; }
+}
+</style>
+</head>
+<body>
+
+<main>
+  <header>
+    <h1>Kim Khanh Tran</h1>
+    <p class="tagline">Computer Science student at San José State University</p>
+    <p class="intro">I work on machine learning and the data pipelines behind it. Recently that has meant generating 1.5 million rows of transistor simulation data to train a device model, and building a retrieval pipeline on AWS for healthcare data.</p>
+    <ul class="links">
+      <li><a href="mailto:tkkhanh.work@gmail.com">tkkhanh.work@gmail.com</a></li>
+      <li><a href="https://github.com/khanh-tran11">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/tkkhanh">LinkedIn</a></li>
+      <li><a href="resume.pdf">Resume (PDF)</a></li>
+    </ul>
+    <p class="avail">Seeking ML, data, or software engineering internships. <b>Available January – September 2027.</b> Based in Sunnyvale, CA.</p>
+  </header>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="item">
+      <div class="item-head"><h3>ML-Based MOSFET Digital Twin</h3><span class="date">Sep 2026 – Present</span></div>
+      <p class="sub">Big Data course project, San José State University · Product Manager and engineer</p>
+      <ul>
+        <li>Built a simulation pipeline with PyCMG and BSIM-CMG that produced 1.5M rows of transistor data, 15 times the 100K-row target.</li>
+        <li>Developing a Python model that predicts transistor current directly, removing the need to run new simulations.</li>
+        <li>Led the team with Jira and GitHub and delivered the proposal, codebase, and dataset.</li>
+      </ul>
+      <p class="stack">Python · NumPy · PyCMG · BSIM-CMG · Jira</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><h3>Life Lynx</h3><span class="date">Apr – May 2025</span></div>
+      <p class="sub">UC Davis Hackathon · Disaster-response communication network</p>
+      <ul>
+        <li>Built and deployed a decentralized disaster-response network with real-time messaging and geospatial mapping, modeled on how cockroach colonies communicate.</li>
+        <li>Added ML-based injury detection and an NLP voice assistant to automate triage and prioritize critical cases, improving communication reliability from 70% to 80%.</li>
+      </ul>
+      <p class="stack">Python · MongoDB · OpenAI API · Google Maps API</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><h3>Human–AI Interaction Study</h3><span class="date">Feb – May 2025</span></div>
+      <p class="sub">Stanford Small Science Group, Stanford University</p>
+      <ul>
+        <li>Built the data collection platform for a 10+ participant study on AI perception and bias, and streamlined the statistical analysis.</li>
+        <li>Results pointed to a feedback loop in both directions: human biases shape AI systems, and biased AI reinforces human decisions.</li>
+      </ul>
+      <p class="stack">Research design · Statistics · Excel</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="item-head"><h3>AI/ML Engineering and Research Fellow</h3><span class="date">Sep 2026 – Present</span></div>
+      <p class="sub">IBM SkillsBuild AI Experiential Learning Lab · Healthcare PBM AI · Remote</p>
+      <ul>
+        <li>Building Python and SQL NLP pipelines for pharmacy benefit manager data, with a goal of 20% faster processing.</li>
+        <li>Training four classification models in PyTorch and scikit-learn, aiming for a 5–10% gain in F1 and AUROC.</li>
+        <li>Building a RAG pipeline on AWS and comparing three retrieval strategies to keep hallucination below 10%.</li>
+        <li>Writing pytest suites for the pipelines and Python APIs toward 80%+ coverage, along with a SQL-backed web demo.</li>
+      </ul>
+      <p class="stack">PyTorch · scikit-learn · SQL · AWS · pytest</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><h3>AI/ML Fellow</h3><span class="date">Jul – Aug 2026</span></div>
+      <p class="sub">AWS AI Camp · Hartnell College industry project</p>
+      <ul>
+        <li>Built a serverless onboarding platform on Amazon Bedrock Knowledge Bases, Lambda, and DynamoDB that automates new-hire training and tracks progress.</li>
+        <li>Built manager dashboards that flag policy violations and automate follow-ups, cutting estimated manager workload by 15% while keeping API token costs down.</li>
+      </ul>
+      <p class="stack">Amazon Bedrock · AWS Lambda · DynamoDB</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><h3>Student Leader</h3><span class="date">May 2026 – Present</span></div>
+      <p class="sub">IBM SkillsBuild · Remote</p>
+      <ul><li>Organize events that connect students with IBM mentors and industry professionals.</li></ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><h3>Instructional Assistant and Ambassador</h3><span class="date">Sep 2024 – Jun 2026</span></div>
+      <p class="sub">MESA Center, De Anza College · Cupertino, CA</p>
+      <ul><li>Built Excel workflows to analyze internship and labor-market data for 1,200+ students, and helped run STEM conferences and career fairs.</li></ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt><dd>Python, SQL, Bash, C++, Java, x86 Assembly</dd>
+      <dt>ML and AI</dt><dd>PyTorch, scikit-learn, Amazon Bedrock Knowledge Bases, OpenAI API</dd>
+      <dt>Cloud and data</dt><dd>AWS Lambda, DynamoDB, MongoDB, NumPy, Excel</dd>
+      <dt>Simulation</dt><dd>PyCMG, BSIM-CMG, OpenVAF-Reloaded</dd>
+      <dt>Tools</dt><dd>Git, GitHub, Jira, pytest</dd>
+    </dl>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="item">
+      <div class="item-head"><h3>San José State University</h3><span class="date">Expected May 2028</span></div>
+      <p class="sub">B.S. Computer Science · Coursework: Data Structures and Algorithms, Big Data Processing, Databases, Linux, Object-Oriented Programming, Statistics</p>
+    </div>
+    <div class="item">
+      <div class="item-head"><h3>De Anza College</h3><span class="date">Jun 2026</span></div>
+      <p class="sub">A.S.-T Computer Science · GPA 3.62 · Magna Cum Laude</p>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <ul class="certs">
+      <li><span>AWS Artificial Intelligence Practitioner Learning Plan, AWS</span><span class="date">Jul 2026</span></li>
+      <li><span>Machine Learning Foundation, Break Through Tech</span><span class="date">Aug 2026</span></li>
+      <li><span>Data Classification and Summarization Using IBM Granite, IBM</span><span class="date">In progress</span></li>
+      <li><span>Introduction to Retrieval Augmented Generation, IBM</span><span class="date">In progress</span></li>
+      <li><span>Make Agentic AI Work for You, IBM</span><span class="date">In progress</span></li>
+      <li><span>Design Thinking Practitioner, IBM</span><span class="date">In progress</span></li>
+    </ul>
+  </section>
+
+  <footer id="contact">
+    <p>The best way to reach me is email: <a href="mailto:tkkhanh.work@gmail.com">tkkhanh.work@gmail.com</a></p>
+    <p class="small">© 2026 Kim Khanh Tran</p>
+  </footer>
+</main>
+</body>
+</html>
